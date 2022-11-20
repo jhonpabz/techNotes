@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
+import Layout from "./components/Layout";
 
 const App = () => {
   return (
-    <div>
-      <h1>zxcv</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}></Route>
+    </Routes>
   );
 };
 
