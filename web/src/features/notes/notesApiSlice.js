@@ -35,7 +35,7 @@ export const notesApiSlice = apiSlice.injectEndpoints({
 export const { useGetNotesQuery } = notesApiSlice;
 
 // returns the query result object
-export const selectNotesResult = notesApiSlice.endpoints.getnotes.select();
+export const selectNotesResult = notesApiSlice.endpoints.getNotes.select();
 
 // creates memoized selector
 const selectNotesData = createSelector(
