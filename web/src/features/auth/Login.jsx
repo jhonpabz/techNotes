@@ -3,10 +3,10 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "./authSlice";
 import { useLoginMutation } from "./authApiSlice";
-import PulseLoader from "react-spinners/PulseLoader";
+// import PulseLoader from "react-spinners/PulseLoader";
 
 const Login = () => {
-  useTitle("Employee Login");
+  // useTitle("Employee Login");
 
   const userRef = useRef();
   const errRef = useRef();
@@ -54,7 +54,7 @@ const Login = () => {
 
   const errClass = errMsg ? "errmsg" : "offscreen";
 
-  if (isLoading) return <PulseLoader color={"#FFF"} />;
+  // if (isLoading) return <PulseLoader color={"#FFF"} />;
 
   const content = (
     <section className="public">
