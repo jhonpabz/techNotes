@@ -21,6 +21,8 @@ export const authApiSlice = apiSlice.injectEndpoints({
           const { data } = await queryFulfilled;
           console.log(data);
           dispatch(logOut());
+
+          // prevent request from continuing to repeat / remove subscibing by deleying dispatch
           setTimeout(() => {
             dispatch(apiSlice.util.resetApiState());
           }, 1000);
