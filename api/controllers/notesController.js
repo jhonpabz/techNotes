@@ -1,11 +1,10 @@
 const User = require('../models/User');
 const Note = require('../models/Note');
-const asyncHandler = require('express-async-handler');
 
 // @desc Get all notes
 // @routes GET /notes
 // @access Private
-const getAllNotes = asyncHandler(async (req, res) => {
+const getAllNotes = async (req, res) => {
   const notes = await Note.find().lean();
   if (!notes?.length) {
     return res.status(400).json({ message: 'No notes found' });
@@ -20,12 +19,12 @@ const getAllNotes = asyncHandler(async (req, res) => {
   );
 
   res.json(notesWithUser);
-});
+};
 
 // @desc Create new notes
 // @routes POST /notes
 // @access Private
-const createNewNote = asyncHandler(async (req, res) => {
+const createNewNote = async (req, res) => {
   const { user, title, text } = req.body;
 
   // Confirm data
@@ -52,12 +51,12 @@ const createNewNote = asyncHandler(async (req, res) => {
   } else {
     res.status(400).json({ message: 'Invalid note data received' });
   }
-});
+};
 
 // @desc Update a notes
 // @routes PATCH /notes
 // @access Private
-const updateNote = asyncHandler(async (req, res) => {
+const updateNote = async (req, res) => {
   const { id, user, title, text, completed } = req.body;
 
   // Confirm data
@@ -90,12 +89,12 @@ const updateNote = asyncHandler(async (req, res) => {
   const updatedNote = await note.save();
 
   res.json({ message: `${updatedNote.title} updated` });
-});
+};
 
 // @desc Delete a notes
 // @routes DELETE /notes
 // @access Private
-const deleteNote = asyncHandler(async (req, res) => {
+const deleteNote = async (req, res) => {
   const { id } = req.body;
   if (!id) {
     return res.status(400).json({ message: 'Note ID Required' });
@@ -110,7 +109,7 @@ const deleteNote = asyncHandler(async (req, res) => {
 
   const reply = `Note ${result.title} with ID ${result._id} has been deleted`;
   res.json(reply);
-});
+};
 
 module.exports = {
   getAllNotes,
