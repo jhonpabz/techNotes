@@ -10,7 +10,7 @@ const Prefetch = () => {
       notesApiSlice.util.prefetch("getNotes", "noteList", { force: true })
     );
     store.dispatch(
-      notesApiSlice.util.prefetch("getUsers", "userList", { force: true })
+      usersApiSlice.util.prefetch("getUsers", "userList", { force: true })
     );
   }, []);
 
